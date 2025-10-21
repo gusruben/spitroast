@@ -23,7 +23,7 @@ jobs:
         run: bun install
       
       - name: Build userscript
-        run: bun run build:userscript
+        run: bun run build
       
       - name: Upload userscript to release
         uses: softprops/action-gh-release@v1
