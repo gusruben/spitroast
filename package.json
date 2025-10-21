@@ -1,23 +1,41 @@
 {
-  "name": "spitroast",
-  "version": "2.1.6",
-  "description": "A simple JavaScript function patcher.",
-  "main": "dist/index.js",
-  "module": "dist/index.mjs",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "prepublish": "tsup ./src/index.ts --dts --format esm,cjs",
-    "test": "npm run prepublish && node --no-warnings --import ./test/setup.mjs --test ./test/index.mjs"
-  },
-  "repository": {
-    "type": "git",
-    "url": "github.com/Cumcord/spitroast"
-  },
-  "author": "creatable",
-  "license": "CC0-1.0",
-  "devDependencies": {
-    "@types/node": "^22.5.1",
-    "tsup": "^8.2.4",
-    "typescript": "^5.5.4"
-  }
+	"name": "spitroast",
+	"version": "2.1.6",
+	"description": "A simple JavaScript function patcher, in userscript form.",
+	"main": "dist/index.js",
+	"module": "dist/index.mjs",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"prepublish": "tsup ./src/index.ts --dts --format esm,cjs",
+		"test": "bun run prepublish && bun test",
+		"build": "bun run build-script.ts",
+		"watch": "bun run build-script.ts --watch"
+	},
+	"repository": {
+		"type": "git",
+		"url": "github.com/gusruben/spitroast"
+	},
+	"author": "creatable",
+	"license": "CC0-1.0",
+	"devDependencies": {
+		"@types/bun": "^1.3.0",
+		"@types/node": "^22.5.1",
+		"@types/tampermonkey": "^5.0.3",
+		"tsup": "^8.2.4",
+		"typescript": "^5.5.4"
+	},
+	"userscript": {
+		"name": "spitroast.user.js",
+		"namespace": "https://github.com/gusruben/spitroast",
+		"match": [
+			"*://*/*"
+		],
+		"grant": [
+			"none"
+		],
+		"run-at": "document-start"
+	},
+	"dependencies": {
+		"prettier": "^3.6.2"
+	}
 }
